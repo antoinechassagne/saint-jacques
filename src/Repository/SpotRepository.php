@@ -19,32 +19,18 @@ class SpotRepository extends ServiceEntityRepository
         parent::__construct($registry, Spot::class);
     }
 
-    // /**
-    //  * @return Spot[] Returns an array of Spot objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * Search a spot by name
+     *
+     * @param String $term
+     * @return Spot[] Returns an array of Spot objects
+     */
+    public function search(String $term)
     {
         return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('s.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+                ->andWhere('s.name LIKE :term')
+                ->setParameter('term', '%' . $term . '%')
+                ->getQuery()
+                ->execute();
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Spot
-    {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }
