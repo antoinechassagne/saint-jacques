@@ -2,7 +2,10 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 const Header = (props) => {
-  const { pages } = props;
+  // Remove routes that should not be in menu
+  const pages = Object.keys(props.pages)
+    .filter((key) => props.pages[key].menu)
+    .map((key) => props.pages[key]);
 
   const menu = Object.keys(pages).map((key, index) => (
     <li key={index}>

@@ -15,8 +15,8 @@ const Spots = () => {
         setLoading(false);
       })
       .catch(() => {
-        setLoading(false);
         setError(true);
+        setLoading(false);
       });
   };
 

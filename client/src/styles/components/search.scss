@@ -1,0 +1,37 @@
+.search {
+  display: inline-block;
+
+  &__results {
+    display: none;
+  }
+
+  &__results--active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: size(16);
+
+    ul {
+      width: 100%;
+      background: $grey--light;
+
+      li > a {
+        display: block;
+        padding: size(8);
+        color: white;
+        transition: ease 0.1s;
+
+        &:hover {
+          background: $grey--dark;
+          color: $blue;
+        }
+      }
+    }
+
+    span {
+      width: 100%;
+      padding: size(8);
+      background: $grey--light;
+    }
+  }
+}

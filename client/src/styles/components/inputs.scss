@@ -1,0 +1,24 @@
+.input {
+  display: flex;
+  flex-direction: column;
+  &__label {
+    color: $grey--light;
+    margin-bottom: size(8);
+    font-size: size(14);
+    text-transform: uppercase;
+  }
+
+  &__input {
+    padding: size(8);
+    background: $grey--dark;
+    border-color: $grey--dark;
+    border-radius: size(8);
+    color: white;
+    animation: ease 0.2s;
+
+    &:focus {
+      outline: none;
+      border-color: $blue;
+    }
+  }
+}
