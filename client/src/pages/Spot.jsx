@@ -10,7 +10,7 @@ const Spot = () => {
   const params = useParams();
 
   const fetchSpot = () => {
-    Api.get(`/spots/${params.id}`)
+    Api.get(`api/spots/${params.id}`)
       .then(({ data }) => {
         setSpot(data);
         setLoading(false);

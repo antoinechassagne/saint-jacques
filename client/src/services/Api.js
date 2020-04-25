@@ -5,8 +5,8 @@ import routes from "../settings/routes";
 const Api = axios.create({
   baseURL:
     process.env.NODE_ENV === "development"
-      ? "http://127.0.0.1:8000/api"
-      : "https://saint-jacques.herokuapp.com/api",
+      ? "http://127.0.0.1:8000"
+      : "https://saint-jacques.herokuapp.com",
 });
 
 Api.interceptors.response.use(

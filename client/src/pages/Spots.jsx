@@ -9,7 +9,7 @@ const Spots = () => {
   const [error, setError] = useState(false);
 
   const fetchSpots = () => {
-    Api.get("/spots")
+    Api.get("api/spots")
       .then(({ data }) => {
         setSpots(data["hydra:member"]);
         setLoading(false);
