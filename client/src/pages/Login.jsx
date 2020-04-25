@@ -37,7 +37,7 @@ const Login = () => {
     return (
       <>
         {renderError()}
-        <FormBase submit={(data) => login(data)}>
+        <FormBase submit={(data) => login(data)} buttonLabel="Se connecter">
           <InputEmail
             required={true}
             validation={true}
