@@ -11,6 +11,15 @@ export default {
   },
   /**
    *
+   *
+   * @param {String} name
+   * @param {String} value
+   */
+  set(name, value) {
+    document.cookie = `${name}=${value}`;
+  },
+  /**
+   *
    * @param {*} name The name of the cookie
    */
   delete(name) {
