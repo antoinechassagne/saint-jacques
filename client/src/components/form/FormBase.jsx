@@ -72,7 +72,7 @@ const FormBase = (props) => {
       }}
     >
       {children}
-      <ButtonPrimary>Se connecter</ButtonPrimary>
+      <ButtonPrimary>{props.buttonLabel}</ButtonPrimary>
     </form>
   );
 };

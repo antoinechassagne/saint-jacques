@@ -6,7 +6,7 @@ const Home = () => {
   document.title = "Saint Jacques";
 
   const searchSpots = (term) => {
-    return Api.get("/spots/search", {
+    return Api.get("api/spots/search", {
       params: { search: term },
     });
   };

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Api from "../services/Api";
+import CookieManager from "../services/CookieManager";
 import FormBase from "../components/form/FormBase";
 import InputEmail from "../components/form/inputs/InputEmail";
 import InputPassword from "../components/form/inputs/InputPassword";
@@ -13,13 +14,19 @@ const Login = () => {
     setLoading(true);
     const { email, password } = credentials;
 
-    Api.post("/login", { body: { email, password } })
+    Api.post("/api/login_check", { email, password })
       .then((response) => {
-        console.log(response);
+        if (response.status === 200) {
+          CookieManager.set("jwt", response.data.token);
+          window.location.replace(`${process.env.PUBLIC_URL}`);
+        } else {
+          setError(true);
+          setLoading(false);
+        }
       })
       .catch(() => {
-        setLoading(false);
         setError(true);
+        setLoading(false);
       });
   };
 
@@ -37,7 +44,7 @@ const Login = () => {
     return (
       <>
         {renderError()}
-        <FormBase submit={(data) => login(data)}>
+        <FormBase submit={(data) => login(data)} buttonLabel="Se connecter">
           <InputEmail
             required={true}
             validation={true}
