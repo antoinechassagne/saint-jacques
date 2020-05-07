@@ -112,4 +112,29 @@ class User implements UserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
+
+
+   public function getSpot(): Collection
+    {
+        return $this->spot;
+    }
+    public function addSpot(Spot $spot): self
+    {
+        if (!$this->spot->contains($spot)) {
+            $this->spot[] = $spot;
+            $spot->setUser($this);
+        }
+        return $this;
+    }
+    public function removeSpot(Spot $spot): self
+    {
+        if ($this->spots->contains($spot)) {
+            $this->spots->removeElement($spot);
+            // set the owning side to null (unless already changed)
+            if ($spot->getUser() === $this) {
+                $spot->setUser(null);
+            }
+        }
+        return $this;
+    }
 }
