@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Api from "../services/Api";
+import ApiAuthentication from "../api/authentication";
 import CookieManager from "../services/CookieManager";
 import FormBase from "../components/form/FormBase";
 import InputEmail from "../components/form/inputs/InputEmail";
@@ -13,8 +13,7 @@ const Login = () => {
   const login = (credentials) => {
     setLoading(true);
     const { email, password } = credentials;
-
-    Api.post("/api/login_check", { email, password })
+    ApiAuthentication.login({ email, password })
       .then((response) => {
         if (response.status === 200) {
           CookieManager.set("jwt", response.data.token);

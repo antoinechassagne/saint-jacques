@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Api from "../services/Api";
+import ApiSpots from "../api/spots";
 
 const Spots = () => {
   document.title = "Saint Jacques | Spots";
@@ -9,7 +9,7 @@ const Spots = () => {
   const [error, setError] = useState(false);
 
   const fetchSpots = () => {
-    Api.get("api/spots")
+    ApiSpots.fetchSpots()
       .then(({ data }) => {
         setSpots(data["hydra:member"]);
         setLoading(false);

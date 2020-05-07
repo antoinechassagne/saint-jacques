@@ -2,6 +2,7 @@ import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Spots from "../pages/Spots";
 import Spot from "../pages/Spot";
+import NotFound from "../pages/NotFound";
 
 export default {
   home: {
@@ -29,7 +30,14 @@ export default {
     path: "/login",
     label: "Se connecter",
     component: Login,
-    menu: true,
+    menu: false,
+    guard: false,
+  },
+  notfound: {
+    path: "/404",
+    label: "Erreur 404",
+    component: NotFound,
+    menu: false,
     guard: false,
   },
 };
