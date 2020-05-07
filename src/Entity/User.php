@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -36,6 +38,16 @@ class User implements UserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+
+    /**
+     * * @ORM\ManyToMany(targetEntity="App\Entity\Spot", inversedBy="users")
+     */
+    private $favoriteSpots;
+
+    public function __construct()
+    {
+        $this->favoriteSpots = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -116,27 +128,28 @@ class User implements UserInterface
     }
 
 
-   public function getSpot(): Collection
+    /**
+     * @return Collection|Spot[]
+     */
+    public function getFavoriteSpots(): Collection
     {
-        return $this->spot;
+        return $this->favoriteSpots;
     }
-    public function addSpot(Spot $spot): self
+
+    public function addFavoriteSpot(Spot $favoriteSpot): self
     {
-        if (!$this->spot->contains($spot)) {
-            $this->spot[] = $spot;
-            $spot->setUser($this);
+        if (!$this->favoriteSpots->contains($favoriteSpot)) {
+            $this->favoriteSpots[] = $favoriteSpot;
         }
+
         return $this;
     }
-    public function removeSpot(Spot $spot): self
+    public function removeFavoriteSpot(Spot $favoriteSpot): self
     {
-        if ($this->spots->contains($spot)) {
-            $this->spots->removeElement($spot);
-            // set the owning side to null (unless already changed)
-            if ($spot->getUser() === $this) {
-                $spot->setUser(null);
-            }
+        if ($this->favoriteSpots->contains($favoriteSpot)) {
+            $this->favoriteSpots->removeElement($favoriteSpot);
         }
+
         return $this;
     }
 }
