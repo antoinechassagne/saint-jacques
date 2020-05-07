@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 
-class SearchSpotController extends AbstractController
+class CustomSpotController extends AbstractController
 {
     /**
     * @Route("api/spots/search", name="search_spots")
