@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Security;
 
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -12,7 +12,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class SignupController extends AbstractController
 {
     /**
-     * @Route("/signup", name="signup")
+     * @Route("api/signup", name="api_signup")
      */
     public function signup(Request $request, UserPasswordEncoderInterface $passwordEncoder): JsonResponse
     {

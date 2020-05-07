@@ -34,6 +34,13 @@ Api.interceptors.response.use(
       // Redirect user to login page
       window.location.replace(`${process.env.PUBLIC_URL}${routes.login.path}`);
     }
+    // Resource doesn't exists
+    if (error.response.status === 404) {
+      // Redirect to 404 page
+      window.location.replace(
+        `${process.env.PUBLIC_URL}${routes.notFound.path}`
+      );
+    }
 
     return Promise.reject(error);
   }

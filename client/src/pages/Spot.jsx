@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Api from "../services/Api";
+import ApiSpots from "../api/spots";
 
 const Spot = () => {
   const [loading, setLoading] = useState(true);
@@ -10,7 +10,7 @@ const Spot = () => {
   const params = useParams();
 
   const fetchSpot = () => {
-    Api.get(`api/spots/${params.id}`)
+    ApiSpots.fetchSpot(params.id)
       .then(({ data }) => {
         setSpot(data);
         setLoading(false);
