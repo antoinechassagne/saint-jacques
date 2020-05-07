@@ -37,7 +37,7 @@ const App = () => {
   return (
     <Router>
       <>
-        <Header pages={routes} />
+        <Header pages={routes} isLogged={isLogged} />
         <main>
           <Switch>{pages}</Switch>
         </main>
