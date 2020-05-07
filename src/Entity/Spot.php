@@ -41,7 +41,7 @@ class Spot
     private $description;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\User", mappedBy="favoriteSpots")
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="favoriteSpots")
      */
     private $users;
 
@@ -108,7 +108,7 @@ class Spot
      */
     public function getUsers(): Collection
     {
-        return $this->$users;
+        return $this->users;
     }
 
     public function addUser(User $user): self
