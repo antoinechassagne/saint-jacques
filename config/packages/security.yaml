@@ -35,3 +35,5 @@ security:
     - { path: ^/api/signup, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: ^/api/signin, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: ^/api/users, roles: IS_AUTHENTICATED_FULLY }
+    - { path: ^/api/users/add-favorite-spot, roles: IS_AUTHENTICATED_FULLY }
+    - { path: ^/api/users/remove-favorite-spot, roles: IS_AUTHENTICATED_FULLY }

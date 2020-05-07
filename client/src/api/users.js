@@ -9,6 +9,16 @@ const addFavoriteSpot = (id) =>
     params: { spot: id },
   });
 
+/**
+ * @param {Number} id The spot id
+ * @returns {Promise} HTTP Reponse
+ */
+const removeFavoriteSpot = (id) =>
+  Api.get("/users/remove-favorite-spot", {
+    params: { spot: id },
+  });
+
 export default {
   addFavoriteSpot,
+  removeFavoriteSpot,
 };

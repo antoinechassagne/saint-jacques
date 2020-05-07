@@ -11,16 +11,18 @@ use Symfony\Component\Routing\Annotation\Route;
 class CustomUserController extends AbstractController
 {
     /**
-    * @Route("api/users/{id}/add-favorite-spot", name="add_favorite_spot")
+    * @Route("/api/users/add-favorite-spot", name="add_favorite_spot")
     */
-    public function addFavoriteSpot($id, User $user, Request $request) 
+    public function addFavoriteSpot(Request $request) 
     {
         $em = $this->getDoctrine()->getManager();
-        $user = $em->getRepository(User::class)->find($id);
+        $user = $this->getUser();
         $spot = $em->getRepository(Spot::class)->find($request->query->get('spot'));
-        $user->addFavoriteSpot($spot);
 
+        $user->addFavoriteSpot($spot);
+        
         try {
+            $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
 
@@ -28,10 +30,37 @@ class CustomUserController extends AbstractController
             $response->setStatusCode(JsonResponse::HTTP_OK);
             return $response;
         } catch (\Exception $e) {
-            dump($e); die;
             $response = new JsonResponse($e);
             $response->setStatusCode(JsonResponse::HTTP_BAD_REQUEST);
             return $response;
         }
+
+    }
+
+    /**
+    * @Route("/api/users/remove-favorite-spot", name="remove_favorite_spot")
+    */
+    public function removeFavoriteSpot(Request $request) 
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+        $spot = $em->getRepository(Spot::class)->find($request->query->get('spot'));
+
+        $user->removeFavoriteSpot($spot);
+        
+        try {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+
+            $response = new JsonResponse();
+            $response->setStatusCode(JsonResponse::HTTP_OK);
+            return $response;
+        } catch (\Exception $e) {
+            $response = new JsonResponse($e);
+            $response->setStatusCode(JsonResponse::HTTP_BAD_REQUEST);
+            return $response;
+        }
+
     }
 }
