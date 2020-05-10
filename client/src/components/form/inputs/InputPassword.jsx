@@ -19,9 +19,7 @@ const InputPassword = (props) => {
     }
 
     // Regex validation
-    const pattern = new RegExp(
-      "^.*(?=.{8,})((?=.*[!@#$%^&*()-_=+{};:,<.>]){1})(?=.*d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$"
-    );
+    const pattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
     const validValue = inputValue.match(pattern);
     setValid(validValue ? true : false);
   };
