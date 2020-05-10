@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
+import routes from "../settings/routes";
 import ApiAuthentication from "../api/authentication";
 import CookieManager from "../services/CookieManager";
 import FormBase from "../components/form/FormBase";
@@ -29,47 +31,34 @@ const Login = () => {
       });
   };
 
-  const renderError = () => (
-    <>
-      {error ? (
-        <span>Les identifiants saisis ne sont pas valides.</span>
-      ) : (
-        <></>
-      )}
-    </>
-  );
-
-  const renderForm = () => {
-    return (
-      <>
-        {renderError()}
-        <FormBase submit={(data) => login(data)} buttonLabel="Se connecter">
-          <InputEmail
-            required={true}
-            validation={true}
-            name="email"
-            label="Email"
-          />
-          <InputPassword
-            required={true}
-            validation={false}
-            name="password"
-            label="Mot de passe"
-          />
-        </FormBase>
-      </>
-    );
-  };
-
-  const content = () => {
-    if (loading) return <span>Chargement...</span>;
-    return renderForm();
-  };
-
   return (
     <section className="page page--login">
       <h1>Se connecter</h1>
-      {content()}
+      {error && (
+        <span class="error">Les identifiants saisis ne sont pas valides.</span>
+      )}
+      <FormBase submit={(data) => login(data)} buttonLabel="Se connecter">
+        <InputEmail
+          required={true}
+          validation={true}
+          name="email"
+          label="Email"
+        />
+        <InputPassword
+          required={true}
+          validation={false}
+          name="password"
+          label="Mot de passe"
+        />
+      </FormBase>
+      {loading && <span>Chargement...</span>}
+      <span>Vous n'avez pas encore de compte ? </span>
+      <NavLink
+        exact={true}
+        to={`${process.env.PUBLIC_URL}${routes.signUp.path}`}
+      >
+        Créez en un dès maintenant !
+      </NavLink>
     </section>
   );
 };
