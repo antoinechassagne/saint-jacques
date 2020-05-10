@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import ApiSpots from "../api/spots";
 
 const Spots = () => {
@@ -28,10 +29,9 @@ const Spots = () => {
     <ul>
       {spots.map((spot, index) => (
         <li key={index}>
-          <h3>{spot.name}</h3>
-          <span>Longitude : {spot.longitude}</span>
-          <span>Latitude : {spot.longitude}</span>
-          <p>{spot.description}</p>
+          <Link to={`${process.env.PUBLIC_URL}/spots/${spot.id}`}>
+            {spot.name}
+          </Link>
         </li>
       ))}
     </ul>
