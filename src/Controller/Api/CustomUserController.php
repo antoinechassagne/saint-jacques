@@ -16,7 +16,7 @@ class CustomUserController extends AbstractController
     */
     public function addFavoriteSpot(Request $request) 
     {
-        $this->toggleFavoriteSpot($request, true);
+        return $this->toggleFavoriteSpot($request, true);
     }
 
     /**
@@ -24,7 +24,7 @@ class CustomUserController extends AbstractController
     */
     public function removeFavoriteSpot(Request $request) 
     {
-        $this->toggleFavoriteSpot($request, false);
+        return $this->toggleFavoriteSpot($request, false);
     }
 
     /**
