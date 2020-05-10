@@ -7,15 +7,15 @@ import FormBase from "../components/form/FormBase";
 import InputEmail from "../components/form/inputs/InputEmail";
 import InputPassword from "../components/form/inputs/InputPassword";
 
-const Login = () => {
+const SignIn = () => {
   document.title = "Saint Jacques | Connexion";
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  const login = (credentials) => {
+  const signIn = (credentials) => {
     setLoading(true);
     const { email, password } = credentials;
-    ApiAuthentication.login({ email, password })
+    ApiAuthentication.signIn({ email, password })
       .then((response) => {
         if (response.status === 200) {
           CookieManager.set("jwt", response.data.token);
@@ -32,12 +32,12 @@ const Login = () => {
   };
 
   return (
-    <section className="page page--login">
+    <section className="page page--sign-in">
       <h1>Se connecter</h1>
       {error && (
         <span class="error">Les identifiants saisis ne sont pas valides.</span>
       )}
-      <FormBase submit={(data) => login(data)} buttonLabel="Se connecter">
+      <FormBase submit={(data) => signIn(data)} buttonLabel="Se connecter">
         <InputEmail
           required={true}
           validation={true}
@@ -63,4 +63,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignIn;

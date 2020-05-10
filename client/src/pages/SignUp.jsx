@@ -5,7 +5,7 @@ import FormBase from "../components/form/FormBase";
 import InputEmail from "../components/form/inputs/InputEmail";
 import InputPassword from "../components/form/inputs/InputPassword";
 
-const SignUpPage = () => {
+const SignUp = () => {
   document.title = "Saint Jacques | S'inscrire";
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -82,4 +82,4 @@ const SignUpPage = () => {
   );
 };
 
-export default SignUpPage;
+export default SignUp;
