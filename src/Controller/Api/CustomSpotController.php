@@ -11,7 +11,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 class CustomSpotController extends AbstractController
 {
     /**
-    * @Route("api/spots/search", name="search_spots")
+    * @Route("api/search/spots", name="search_spots")
     */
     public function search(Request $request, SerializerInterface $serializer)
     {

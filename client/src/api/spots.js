@@ -16,7 +16,7 @@ const fetchSpot = (id) => Api.get(`/spots/${id}`);
  * @returns {Promise} HTTP Reponse
  */
 const searchSpot = (term) =>
-  Api.get("/spots/search", {
+  Api.get("/search/spots", {
     params: { search: term },
   });
 
