@@ -28,7 +28,7 @@ const SignUp = () => {
       .then(() => {
         // Once the user has been registered,
         // we need to sign in
-        ApiAuthentication.login({ email, password })
+        ApiAuthentication.signIn({ email, password })
           .then((response) => {
             CookieManager.set("jwt", response.data.token);
             window.location.replace(`${process.env.PUBLIC_URL}`);
@@ -45,7 +45,7 @@ const SignUp = () => {
   };
 
   return (
-    <section className="page page--login">
+    <section className="page page--sign-up">
       <h1>S'inscrire</h1>
       {error && (
         <span className="error">

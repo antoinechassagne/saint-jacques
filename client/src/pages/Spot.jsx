@@ -53,7 +53,7 @@ const Spot = () => {
           <button
             onClick={() => {
               window.location.replace(
-                `${process.env.PUBLIC_URL}${routes.login.path}`
+                `${process.env.PUBLIC_URL}${routes.signIn.path}`
               );
             }}
           >
