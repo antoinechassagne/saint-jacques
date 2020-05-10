@@ -43,6 +43,10 @@ const Spot = () => {
       });
   };
 
+  useEffect(() => {
+    fetchSpot();
+  }, []);
+
   const AddFavoriteSpotButton = () => {
     const isLogged = CookieManager.get("jwt") ? true : false;
 
@@ -69,10 +73,6 @@ const Spot = () => {
       </button>
     );
   };
-
-  useEffect(() => {
-    fetchSpot();
-  }, []);
 
   const content = () => {
     if (loading) return <span>Chargement...</span>;
