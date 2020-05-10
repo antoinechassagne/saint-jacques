@@ -19,8 +19,7 @@ const Spot = () => {
     ApiSpots.fetchSpot(params.id)
       .then(({ data }) => {
         setSpot(data);
-        // @TODO Handle isFavorite state based on flag send in spot response
-        setIsFavorite(false);
+        setIsFavorite(data.isFavorite);
         setLoading(false);
       })
       .catch(() => {
@@ -36,6 +35,7 @@ const Spot = () => {
     ApiUsers[method](params.id)
       .then(() => {
         setLoadingAddFavorite(false);
+        setIsFavorite(!isFavorite);
       })
       .catch(() => {
         setErrorAddFavorite(true);
@@ -72,7 +72,7 @@ const Spot = () => {
 
   useEffect(() => {
     fetchSpot();
-  }, []);
+  }, [isFavorite]);
 
   const content = () => {
     if (loading) return <span>Chargement...</span>;
