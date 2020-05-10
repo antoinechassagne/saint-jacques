@@ -13,7 +13,7 @@ class CustomSpotController extends AbstractController
     /**
      * @Route("api/spots/{id}", name="get_spot")
      */
-    public function getSpot($id, Request $request, SerializerInterface $serializer) {
+    public function getSpot($id, SerializerInterface $serializer) {
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
         $spot = $em->getRepository(Spot::class)->find($id);

@@ -1,6 +1,11 @@
 import Api from "../services/Api";
 
 /**
+ * @returns {Promise} HTTP Reponse
+ */
+const fetchUserFavoriteSpots = () => Api.get("/users/favorite-spots");
+
+/**
  * @param {Number} id The spot id
  * @returns {Promise} HTTP Reponse
  */
@@ -19,6 +24,7 @@ const removeFavoriteSpot = (id) =>
   });
 
 export default {
+  fetchUserFavoriteSpots,
   addFavoriteSpot,
   removeFavoriteSpot,
 };

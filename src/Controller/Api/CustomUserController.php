@@ -8,9 +8,25 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class CustomUserController extends AbstractController
 {
+    /**
+     * @Route("/api/users/favorite-spots", name="user_favorite_spots")
+     */
+    public function getUserFavoriteSpots(SerializerInterface $serializer) 
+    {
+        $user = $this->getUser();
+        $results = $user->getFavoriteSpots();
+        $results = $serializer->serialize($results, "json");
+        
+        $response = new JsonResponse();
+        $response->setContent($results);
+        $response->setStatusCode(JsonResponse::HTTP_OK);
+        return $response;
+    }
+
     /**
     * @Route("/api/users/add-favorite-spot", name="add_favorite_spot")
     */
