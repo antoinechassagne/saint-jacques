@@ -1,5 +1,6 @@
 import Home from "../pages/Home";
-import Login from "../pages/Login";
+import SignIn from "../pages/SignIn";
+import SignUp from "../pages/SignUp";
 import Spots from "../pages/Spots";
 import Spot from "../pages/Spot";
 import NotFound from "../pages/NotFound";
@@ -26,10 +27,17 @@ export default {
     menu: false,
     guard: false,
   },
-  login: {
-    path: "/login",
+  signIn: {
+    path: "/sign-in",
     label: "Se connecter",
-    component: Login,
+    component: SignIn,
+    menu: false,
+    guard: false,
+  },
+  signUp: {
+    path: "/sign-up",
+    label: "S'inscrire'",
+    component: SignUp,
     menu: false,
     guard: false,
   },

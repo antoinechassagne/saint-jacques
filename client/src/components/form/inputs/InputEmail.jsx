@@ -1,32 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const InputEmail = (props) => {
   const [inputValue, setInputValue] = useState("");
   const [valid, setValid] = useState(true);
+  const [disableValidation, setDisableValidation] = useState(true);
 
-  const validation = (event) => {
+  const validation = () => {
     // Skip validation if validation prop is set to false
     if (!props.validation) return;
 
-    const { value } = event.target;
+    // Skip validation when user is writing for the first time
+    if (disableValidation) return;
 
     // Case where value is empty but required
-    if (props.required && !value) {
+    if (props.required && !inputValue) {
       setValid(false);
       return;
     }
 
     // Regex validation
     const pattern = new RegExp("[^@]+@[^.]+..+");
-    const valid = value.match(pattern);
-    setValid(valid ? true : false);
+    const validValue = inputValue.match(pattern);
+    setValid(validValue ? true : false);
   };
 
-  const handleChange = (event) => {
-    const { value, name } = event.target;
-    setInputValue(value);
-    props.inputChange({ name, value, valid, required: props.required });
-  };
+  useEffect(() => {
+    // Validation
+    if (!disableValidation) {
+      validation();
+    }
+
+    // Send to parent
+    props.inputChange({
+      name: props.name,
+      value: inputValue,
+      valid,
+      required: props.required,
+    });
+  }, [disableValidation, inputValue, valid]);
 
   return (
     <div className="input">
@@ -39,18 +50,18 @@ const InputEmail = (props) => {
         value={inputValue}
         name={props.name}
         required={props.required}
-        onChange={(e) => {
-          if (!valid) {
-            validation(e);
+        onChange={(e) => setInputValue(e.target.value)}
+        onBlur={(e) => {
+          // Enable validation on the first blur
+          if (disableValidation) {
+            setDisableValidation(false);
+            return;
           }
-          handleChange(e);
+          setInputValue(e.target.value);
         }}
-        onBlur={(e) => validation(e)}
       />
-      {!valid ? (
-        <p className="input__error">L'adresse email n'est pas valide</p>
-      ) : (
-        ""
+      {!valid && (
+        <span className="error">Veuillez saisir une adresse email valide.</span>
       )}
     </div>
   );

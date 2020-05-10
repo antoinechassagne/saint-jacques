@@ -10,7 +10,7 @@ const Header = (props) => {
 
   // If user isn't logged, we add signin link in menu
   if (!props.isLogged) {
-    pages.push(props.pages.login);
+    pages.push(props.pages.signIn);
   }
 
   const menu = () => {
@@ -26,23 +26,6 @@ const Header = (props) => {
       </li>
     ));
 
-    // If user is logged, we add signout button in menu
-    if (props.isLogged) {
-      // Sign out link
-      entries.push(
-        <button
-          onClick={() => {
-            CookieManager.delete("jwt");
-            window.location.replace(
-              `${process.env.PUBLIC_URL}${props.pages.home.path}`
-            );
-          }}
-        >
-          Se déconnecter
-        </button>
-      );
-    }
-
     return entries;
   };
 
@@ -51,6 +34,18 @@ const Header = (props) => {
       <span className="header__brand">Saint Jacques</span>
       <nav>
         <ul className="header__menu">{menu()}</ul>
+        {props.isLogged && (
+          <button
+            onClick={() => {
+              CookieManager.delete("jwt");
+              window.location.replace(
+                `${process.env.PUBLIC_URL}${props.pages.home.path}`
+              );
+            }}
+          >
+            Se déconnecter
+          </button>
+        )}
       </nav>
     </header>
   );

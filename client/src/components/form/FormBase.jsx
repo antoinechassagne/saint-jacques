@@ -45,15 +45,17 @@ const FormBase = (props) => {
 
   const children = React.Children.map(props.children, (child) => {
     // Inject inputChange function as props on every input
+    if (!child) return undefined;
     return React.cloneElement(child, {
       inputChange,
     });
-  });
+  }).filter((el) => el);
 
   useEffect(() => {
     // Register each input in state
     const inputs = {};
     props.children.forEach((child) => {
+      if (!child) return;
       inputs[child.props.name] = {
         name: child.props.name,
         valid: child.props.required ? false : true,
@@ -61,7 +63,7 @@ const FormBase = (props) => {
       };
     });
     setInputsData(inputs);
-  }, [props.children, setInputsData]);
+  }, [setInputsData]);
 
   return (
     <form

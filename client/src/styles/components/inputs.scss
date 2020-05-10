@@ -1,6 +1,7 @@
 .input {
   display: flex;
   flex-direction: column;
+
   &__label {
     color: $grey--light;
     margin-bottom: size(8);

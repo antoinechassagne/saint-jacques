@@ -18,7 +18,7 @@ const App = () => {
     return isLogged ? (
       <Page />
     ) : (
-      <Redirect to={`${process.env.PUBLIC_URL}${routes.login.path}`} />
+      <Redirect to={`${process.env.PUBLIC_URL}${routes.signIn.path}`} />
     );
   };
 

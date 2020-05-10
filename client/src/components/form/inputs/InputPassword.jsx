@@ -1,34 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const InputPassword = (props) => {
   const [inputValue, setInputValue] = useState("");
   const [valid, setValid] = useState(true);
+  const [disableValidation, setDisableValidation] = useState(true);
 
-  const validation = (event) => {
+  const validation = () => {
     // Skip validation if validation prop is set to false
     if (!props.validation) return;
 
-    const { value } = event.target;
+    // Skip validation when user is writing for the first time
+    if (disableValidation) return;
 
     // Case where value is empty but required
-    if (props.required && !value) {
+    if (props.required && !inputValue) {
       setValid(false);
       return;
     }
 
     // Regex validation
-    const pattern = new RegExp(
-      "^.*(?=.{8,})((?=.*[!@#$%^&*()-_=+{};:,<.>]){1})(?=.*d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$"
-    );
-    const valid = value.match(pattern);
-    setValid(valid ? true : false);
+    const pattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+    const validValue = inputValue.match(pattern);
+    setValid(validValue ? true : false);
   };
 
-  const handleChange = (event) => {
-    const { value, name } = event.target;
-    setInputValue(value);
-    props.inputChange({ name, value, valid, required: props.required });
-  };
+  useEffect(() => {
+    // Validation
+    if (!disableValidation) {
+      validation();
+    }
+
+    // Send to parent
+    props.inputChange({
+      name: props.name,
+      value: inputValue,
+      valid,
+      required: props.required,
+    });
+  }, [disableValidation, inputValue, valid]);
 
   return (
     <div className="input">
@@ -41,21 +50,21 @@ const InputPassword = (props) => {
         value={inputValue}
         name={props.name}
         required={props.required}
-        onChange={(e) => {
-          if (!valid) {
-            validation(e);
+        onChange={(e) => setInputValue(e.target.value)}
+        onBlur={(e) => {
+          // Enable validation on the first blur
+          if (disableValidation) {
+            setDisableValidation(false);
+            return;
           }
-          handleChange(e);
+          setInputValue(e.target.value);
         }}
-        onBlur={(e) => validation(e)}
       />
-      {!valid ? (
-        <p className="input__error">
-          Le mot de passe doit contenir au moins 8 characters (dont au moins 1
-          majuscule, 1 minuscule, 1 chiffre et 1 caractère spécial)
+      {!valid && (
+        <p className="error">
+          Le mot de passe doit contenir au moins 8 caractères (dont au moins une
+          majuscule, une minuscule, un chiffre et un caractère spécial).
         </p>
-      ) : (
-        <></>
       )}
     </div>
   );
