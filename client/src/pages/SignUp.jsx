@@ -7,6 +7,7 @@ import InputPassword from "../components/form/inputs/InputPassword";
 
 const SignUp = () => {
   document.title = "Saint Jacques | S'inscrire";
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [identicalPasswords, setIdenticalPasswords] = useState(true);

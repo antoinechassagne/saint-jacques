@@ -4,9 +4,9 @@ import SearchSpots from "../components/search/SearchSpots";
 import ApiSpots from "../api/spots";
 import ApiUsers from "../api/users";
 
-document.title = "Saint Jacques";
-
 const Home = () => {
+  document.title = "Saint Jacques";
+
   const [favoriteSpots, setFavoriteSpots] = useState([]);
   const [loadingFavoriteSpots, setLoadingFavoriteSpots] = useState(true);
   const [errorFavoriteSpots, setErrorFavoriteSpots] = useState(false);

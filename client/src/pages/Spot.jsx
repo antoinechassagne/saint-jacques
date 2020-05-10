@@ -6,6 +6,8 @@ import CookieManager from "../services/CookieManager";
 import routes from "../settings/routes";
 
 const Spot = () => {
+  document.title = "Saint Jacques | Chargement...";
+
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
@@ -18,6 +20,7 @@ const Spot = () => {
   const fetchSpot = () => {
     ApiSpots.fetchSpot(params.id)
       .then(({ data }) => {
+        document.title = `Saint Jacques | ${data.name}`;
         setSpot(data);
         setIsFavorite(data.isFavorite);
         setLoading(false);

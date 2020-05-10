@@ -8,7 +8,8 @@ import InputEmail from "../components/form/inputs/InputEmail";
 import InputPassword from "../components/form/inputs/InputPassword";
 
 const SignIn = () => {
-  document.title = "Saint Jacques | Connexion";
+  document.title = "Saint Jacques | Se connecter";
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
