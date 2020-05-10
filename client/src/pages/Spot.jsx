@@ -72,7 +72,7 @@ const Spot = () => {
 
   useEffect(() => {
     fetchSpot();
-  }, [isFavorite]);
+  }, []);
 
   const content = () => {
     if (loading) return <span>Chargement...</span>;
