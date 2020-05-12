@@ -32,7 +32,8 @@ Api.interceptors.response.use(
       // Delete the previous JWT
       CookieManager.delete("jwt");
       // Redirect user to login page
-      window.location.replace(`${process.env.PUBLIC_URL}${routes.login.path}`);
+      document.location.reload(true);
+      window.location.replace(`${process.env.PUBLIC_URL}${routes.signIn.path}`);
     }
     // Resource doesn't exists
     if (error.response.status === 404) {
