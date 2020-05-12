@@ -5,6 +5,12 @@
 
   &__brand {
     text-transform: uppercase;
+    font-weight: bold;
+    color: white;
+  }
+
+  &__brand .active {
+    border-bottom: none;
   }
 
   &__menu {

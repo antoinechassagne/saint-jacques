@@ -52,7 +52,7 @@ const Home = () => {
   };
 
   return (
-    <section className="page">
+    <section>
       <h1>Bienvenue sur Saint Jacques</h1>
       <SearchSpots label="Rechercher un spot" search={ApiSpots.searchSpot} />
       {renderFavoriteSpots()}

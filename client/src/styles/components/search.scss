@@ -1,5 +1,7 @@
 .search {
   display: inline-block;
+  width: 100%;
+  max-width: 600px;
 
   &__results {
     display: none;
@@ -33,5 +35,9 @@
       padding: size(8);
       background: $grey--light;
     }
+  }
+
+  .input {
+    margin-bottom: 0;
   }
 }

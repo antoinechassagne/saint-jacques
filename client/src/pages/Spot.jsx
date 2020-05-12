@@ -81,13 +81,13 @@ const Spot = () => {
     if (loading) return <span>Chargement...</span>;
     if (error) return <span>Une erreur est survenue.</span>;
     return (
-      <>
+      <section>
         <h1>{spot.name}</h1>
         <span>Longitude : {spot.longitude}</span>
         <span>Latitude : {spot.longitude}</span>
         <p>{spot.description}</p>
         {AddFavoriteSpotButton()}
-      </>
+      </section>
     );
   };
 

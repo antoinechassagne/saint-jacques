@@ -4,7 +4,7 @@ const NotFound = () => {
   document.title = "Saint Jacques | 404";
 
   return (
-    <section className="page">
+    <section>
       <h1>Erreur 404</h1>
       <p>
         Cette pas n'existe pas...{" "}

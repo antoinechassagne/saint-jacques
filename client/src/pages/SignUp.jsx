@@ -46,10 +46,10 @@ const SignUp = () => {
   };
 
   return (
-    <section className="page page--sign-up">
+    <section class="page page--sign-up">
       <h1>S'inscrire</h1>
       {error && (
-        <span className="error">
+        <span className="error d-block mb--m">
           Les identifiants saisis ne sont pas valides. Il se peut que l'adresse
           email saisie soit déjà associée à un compte.
         </span>
@@ -73,12 +73,12 @@ const SignUp = () => {
           label="Conformation du mot de passe"
         />
         {!identicalPasswords && (
-          <span className="error">
+          <span className="error d-block mb--s">
             Les mots de passe saisis ne sont pas identiques.
           </span>
         )}
-        {loading && <span>Chargement...</span>}
       </FormBase>
+      {loading && <span className="d-block mt--s">Chargement...</span>}
     </section>
   );
 };

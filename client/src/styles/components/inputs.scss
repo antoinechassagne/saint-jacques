@@ -1,6 +1,7 @@
 .input {
   display: flex;
   flex-direction: column;
+  margin-bottom: 1rem;
 
   &__label {
     color: $grey--light;
@@ -21,5 +22,9 @@
       outline: none;
       border-color: $blue;
     }
+  }
+
+  .error {
+    margin-top: 0.5rem;
   }
 }

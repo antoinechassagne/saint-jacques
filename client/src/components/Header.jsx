@@ -30,8 +30,14 @@ const Header = (props) => {
   };
 
   return (
-    <header className="header">
-      <span className="header__brand">Saint Jacques</span>
+    <header className="header mb--xl">
+      <NavLink
+        exact={true}
+        to={`${process.env.PUBLIC_URL}`}
+        className="header__brand"
+      >
+        Saint Jacques
+      </NavLink>
       <nav>
         <ul className="header__menu">{menu()}</ul>
         {props.isLogged && (

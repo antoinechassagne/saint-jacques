@@ -10,7 +10,7 @@ export default {
     path: "/",
     label: "Accueil",
     component: Home,
-    menu: true,
+    menu: false,
     guard: false,
   },
   spots: {

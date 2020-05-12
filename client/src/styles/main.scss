@@ -5,6 +5,7 @@
 // Scaffolding
 @import "scaffolding/reset";
 @import "scaffolding/base";
+@import "scaffolding/layout";
 
 // Components
 @import "components/header";
@@ -12,3 +13,5 @@
 @import "components/texts";
 @import "components/search";
 @import "components/inputs";
+
+@import "layout/page";

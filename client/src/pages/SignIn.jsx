@@ -53,13 +53,15 @@ const SignIn = () => {
         />
       </FormBase>
       {loading && <span>Chargement...</span>}
-      <span>Vous n'avez pas encore de compte ? </span>
-      <NavLink
-        exact={true}
-        to={`${process.env.PUBLIC_URL}${routes.signUp.path}`}
-      >
-        Créez en un dès maintenant !
-      </NavLink>
+      <span className="mt--s mb--xs d-block">
+        Vous n'avez pas encore de compte ?{" "}
+        <NavLink
+          exact={true}
+          to={`${process.env.PUBLIC_URL}${routes.signUp.path}`}
+        >
+          Créez en un dès maintenant !
+        </NavLink>
+      </span>
     </section>
   );
 };

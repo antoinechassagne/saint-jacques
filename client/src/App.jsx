@@ -38,7 +38,7 @@ const App = () => {
     <Router>
       <>
         <Header pages={routes} isLogged={isLogged} />
-        <main>
+        <main className="container">
           <Switch>{pages}</Switch>
         </main>
       </>

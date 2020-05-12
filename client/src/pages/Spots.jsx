@@ -45,7 +45,7 @@ const Spots = () => {
   };
 
   return (
-    <section className="page">
+    <section>
       <h1>Tous les spots</h1>
       {content()}
     </section>
