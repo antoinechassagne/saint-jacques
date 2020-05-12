@@ -37,7 +37,7 @@ const FormBase = (props) => {
         form[inputsData[key].name] = inputsData[key].value;
       }
     });
-
+    console.log(form);
     if (!error) {
       props.submit(form);
     }
@@ -74,7 +74,13 @@ const FormBase = (props) => {
       }}
     >
       {children}
-      <ButtonPrimary>{props.buttonLabel}</ButtonPrimary>
+      <ButtonPrimary
+        onClick={() => {
+          handleSubmit();
+        }}
+      >
+        {props.buttonLabel}
+      </ButtonPrimary>
     </form>
   );
 };
