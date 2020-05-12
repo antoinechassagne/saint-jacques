@@ -1,9 +1,8 @@
 <?php
 namespace App\Controller\Api;
 
-use App\Entity\User;
 use App\Entity\Spot;
-use phpDocumentor\Reflection\Types\Boolean;
+use App\Service\WeatherDataPuller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -15,14 +14,21 @@ class CustomUserController extends AbstractController
     /**
      * @Route("/api/users/favorite-spots", name="user_favorite_spots")
      */
-    public function getUserFavoriteSpots(SerializerInterface $serializer) 
+    public function getUserFavoriteSpots(SerializerInterface $serializer, WeatherDataPuller $weatherDataPuller) 
     {
         $user = $this->getUser();
-        $results = $user->getFavoriteSpots();
-        $results = $serializer->serialize($results, "json");
-        
+        $spots = $user->getFavoriteSpots();
+
+        // Serialize
+        $spots = json_decode($serializer->serialize($spots, "json"), JSON_UNESCAPED_SLASHES);
+
+        // Add weather data to spots
+        foreach ($spots as $key => $value) {
+            $spots[$key]['weatherData'] = $weatherDataPuller->pull(floatval($spots[$key]['latitude']), floatval($spots[$key]['longitude']));
+        }
+
         $response = new JsonResponse();
-        $response->setContent($results);
+        $response->setContent($serializer->serialize($spots, "json"));
         $response->setStatusCode(JsonResponse::HTTP_OK);
         return $response;
     }
