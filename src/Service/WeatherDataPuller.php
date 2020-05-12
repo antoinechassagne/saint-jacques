@@ -42,6 +42,6 @@ class WeatherDataPuller
             return null;
         }
 
-        return json_decode($response->getContent()); 
+        return $response->toArray(); 
     }
 }
