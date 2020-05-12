@@ -2,6 +2,7 @@
 namespace App\Controller\Api;
 
 use App\Entity\Spot;
+use App\Service\WeatherDataPuller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -13,11 +14,16 @@ class CustomSpotController extends AbstractController
     /**
      * @Route("api/spots/{id}", name="get_spot")
      */
-    public function getSpot($id, SerializerInterface $serializer) {
+    public function getSpot($id, SerializerInterface $serializer, WeatherDataPuller $weatherDataPuller) {
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
         $spot = $em->getRepository(Spot::class)->find($id);
+
+        // Serialize
         $result = json_decode($serializer->serialize($spot, "json"), JSON_UNESCAPED_SLASHES);
+
+        // Add weather data to response
+        $result['weatherData'] = $weatherDataPuller->pull(floatval($result['latitude']), floatval($result['longitude']));
         
         // Add flag to response
         $result['isFavorite'] = false;
