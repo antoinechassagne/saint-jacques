@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/saint-jacques/precache-manifest.91ce0e61a96d2e7587022dac33447f87.js"
+  "/saint-jacques/precache-manifest.7617dcad6517e2efb852c3b748fec9d6.js"
 );
 
 self.addEventListener('message', (event) => {
