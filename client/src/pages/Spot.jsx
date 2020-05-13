@@ -4,6 +4,7 @@ import ApiSpots from "../api/spots";
 import ApiUsers from "../api/users";
 import CookieManager from "../services/CookieManager";
 import routes from "../settings/routes";
+import WavesChart from "../components/charts/WavesChart";
 
 const Spot = () => {
   document.title = "Saint Jacques | Chargement...";
@@ -88,6 +89,7 @@ const Spot = () => {
         <span className="d-block mb--xs">Latitude : {spot.longitude}</span>
         <p>{spot.description}</p>
         {AddFavoriteSpotButton()}
+        <WavesChart data={spot.weatherData} />
       </section>
     );
   };

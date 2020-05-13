@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CookieManager from "../services/CookieManager";
 import SearchSpots from "../components/search/SearchSpots";
+import WavesChart from "../components/charts/WavesChart";
 import ApiSpots from "../api/spots";
 import ApiUsers from "../api/users";
 
@@ -45,7 +46,10 @@ const Home = () => {
           <span>Aucun spots favoris.</span>
         )}
         {favoriteSpots.map((spot) => (
-          <h4>{spot.name}</h4>
+          <>
+            <h4 className="d-block mt--m">{spot.name}</h4>
+            <WavesChart data={spot.weatherData} />
+          </>
         ))}
       </div>
     );

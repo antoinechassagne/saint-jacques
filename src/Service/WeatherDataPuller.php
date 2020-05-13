@@ -29,9 +29,9 @@ class WeatherDataPuller
         $body = [
             "lat" => $latitude,
             "lon" => $longitude,
-            "model" => "gfs",
-            "parameters" => ["wind", "dewpoint", "rh", "pressure"],
-            "levels" => ["surface", "800h", "300h"],
+            "model" => "wavewatch",
+            "parameters" => ["waves"],
+            "levels" => ["surface"],
             "key" => $this->apiKey
         ];
 
