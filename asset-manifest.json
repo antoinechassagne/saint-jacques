@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/saint-jacques/static/css/main.73183148.chunk.css",
-    "main.js": "/saint-jacques/static/js/main.e6d157a2.chunk.js",
-    "main.js.map": "/saint-jacques/static/js/main.e6d157a2.chunk.js.map",
+    "main.css": "/saint-jacques/static/css/main.c7b6368c.chunk.css",
+    "main.js": "/saint-jacques/static/js/main.f3837f74.chunk.js",
+    "main.js.map": "/saint-jacques/static/js/main.f3837f74.chunk.js.map",
     "runtime-main.js": "/saint-jacques/static/js/runtime-main.92ccb2f1.js",
     "runtime-main.js.map": "/saint-jacques/static/js/runtime-main.92ccb2f1.js.map",
     "static/js/2.630c08c3.chunk.js": "/saint-jacques/static/js/2.630c08c3.chunk.js",
     "static/js/2.630c08c3.chunk.js.map": "/saint-jacques/static/js/2.630c08c3.chunk.js.map",
     "index.html": "/saint-jacques/index.html",
-    "precache-manifest.7617dcad6517e2efb852c3b748fec9d6.js": "/saint-jacques/precache-manifest.7617dcad6517e2efb852c3b748fec9d6.js",
+    "precache-manifest.79e0c57801e88b26c3afe87f9ae75429.js": "/saint-jacques/precache-manifest.79e0c57801e88b26c3afe87f9ae75429.js",
     "service-worker.js": "/saint-jacques/service-worker.js",
-    "static/css/main.73183148.chunk.css.map": "/saint-jacques/static/css/main.73183148.chunk.css.map",
+    "static/css/main.c7b6368c.chunk.css.map": "/saint-jacques/static/css/main.c7b6368c.chunk.css.map",
     "static/js/2.630c08c3.chunk.js.LICENSE.txt": "/saint-jacques/static/js/2.630c08c3.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.92ccb2f1.js",
     "static/js/2.630c08c3.chunk.js",
-    "static/css/main.73183148.chunk.css",
-    "static/js/main.e6d157a2.chunk.js"
+    "static/css/main.c7b6368c.chunk.css",
+    "static/js/main.f3837f74.chunk.js"
   ]
 }
