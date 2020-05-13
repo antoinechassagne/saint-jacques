@@ -55,9 +55,10 @@ const Spot = () => {
 
     if (!isLogged) {
       return (
-        <div>
+        <div className="mt--s">
           <span>Connectez-vous pour ajouter ce spot à vos favoris</span>
           <button
+            className="mt--l"
             onClick={() => {
               window.location.replace(
                 `${process.env.PUBLIC_URL}${routes.signIn.path}`
@@ -71,7 +72,7 @@ const Spot = () => {
     }
 
     return (
-      <button onClick={() => toggleFavoriteSpot()}>
+      <button onClick={() => toggleFavoriteSpot()} className="mt--l">
         {isFavorite ? "Retirer de mes favoris" : "Ajouter à mes favoris"}
       </button>
     );
@@ -83,8 +84,8 @@ const Spot = () => {
     return (
       <section>
         <h1>{spot.name}</h1>
-        <span>Longitude : {spot.longitude}</span>
-        <span>Latitude : {spot.longitude}</span>
+        <span className="d-block mb--xs">Longitude : {spot.longitude}</span>
+        <span className="d-block mb--xs">Latitude : {spot.longitude}</span>
         <p>{spot.description}</p>
         {AddFavoriteSpotButton()}
       </section>

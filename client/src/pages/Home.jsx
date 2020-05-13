@@ -38,8 +38,8 @@ const Home = () => {
     if (!isLogged) return;
 
     return (
-      <div className="favorite-spots">
-        <h3>Spots favoris</h3>
+      <div>
+        <h2 className="mt--l">Vos spots favoris</h2>
         {loadingFavoriteSpots && <span>Chargement...</span>}
         {!loadingFavoriteSpots && !favoriteSpots.length && (
           <span>Aucun spots favoris.</span>
