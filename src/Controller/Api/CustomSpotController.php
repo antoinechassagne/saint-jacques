@@ -25,7 +25,7 @@ class CustomSpotController extends AbstractController
 
         // Add weather data to response
         $result['wavewatchData'] = $weatherDataPuller->pull(floatval($result['latitude']), floatval($result['longitude']), "wavewatch");
-        $result['aromeData'] = $weatherDataPuller->pull(floatval($result['latitude']), floatval($result['longitude']), "arome");
+        $result['gfsData'] = $weatherDataPuller->pull(floatval($result['latitude']), floatval($result['longitude']), "gfs");
 
         // Add flag to response
         $result['isFavorite'] = false;

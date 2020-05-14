@@ -54,23 +54,26 @@ const PeriodChart = (props) => {
         />
         <VictoryAxis
           dependentAxis
-          tickFormat={(y) => `${y}m`}
+          tickFormat={(y) => `${y} s`}
           style={{
-            tickLabels: { fontSize: 4 },
+            tickLabels: { fontSize: 6 },
           }}
         />
         <VictoryBar
           data={data}
           interpolation={"basis"}
-          barRatio={0.8}
-          labels={({ datum }) => datum.y + "s"}
+          barRatio={0.6}
+          labels={({ datum }) => datum.y.toFixed(1) + "s"}
+          labelComponent={<VictoryLabel dy={30} />}
           style={{
             data: {
               fill: "cyan",
+              opacity: 0.4,
             },
             labels: {
-              fill: "white",
-              fontSize: 2,
+              fill: "cyan",
+              fontSize: 6,
+              fontWeight: 600,
             },
           }}
         />

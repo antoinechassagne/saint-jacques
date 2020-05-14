@@ -6,6 +6,7 @@ import CookieManager from "../services/CookieManager";
 import routes from "../settings/routes";
 import WavesChart from "../components/charts/WavesChart";
 import PeriodChart from "../components/charts/PeriodChart";
+import TempChart from "../components/charts/TempChart";
 
 const Spot = () => {
   document.title = "Saint Jacques | Chargement...";
@@ -92,7 +93,7 @@ const Spot = () => {
         {AddFavoriteSpotButton()}
         <WavesChart data={spot.wavewatchData} width={700} height={200} />
         <PeriodChart data={spot.wavewatchData} width={700} height={200} />
-
+        <TempChart data={spot.gfsData} width={700} height={200} />
       </section>
     );
   };

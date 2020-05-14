@@ -61,13 +61,18 @@ const WavesChart = (props) => {
         <VictoryArea
           data={data}
           interpolation={"basis"}
-          labelComponent={<VictoryTooltip />}
+          labels={({ datum }) => `${datum.y.toFixed(1)} m`}
           style={{
             data: {
               fill: "cyan",
               stroke: "cyan",
               fillOpacity: 0.4,
               strokeWidth: 2,
+            },
+            labels: {
+              fill: "cyan",
+              fontSize: 6,
+              fontWeight: 600,
             },
           }}
         />

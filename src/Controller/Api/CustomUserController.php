@@ -25,7 +25,7 @@ class CustomUserController extends AbstractController
         // Add weather data to spots
         foreach ($spots as $key => $value) {
             $spots[$key]['wavewatchData'] = $weatherDataPuller->pull(floatval($spots[$key]['latitude']), floatval($spots[$key]['longitude']), "wavewatch");
-            $spots[$key]['aromeData'] = $weatherDataPuller->pull(floatval($spots[$key]['latitude']), floatval($spots[$key]['longitude']), "arome");
+            $spots[$key]['gfsData'] = $weatherDataPuller->pull(floatval($spots[$key]['latitude']), floatval($spots[$key]['longitude']), "gfs");
         }
 
         $response = new JsonResponse();
