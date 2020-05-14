@@ -92,9 +92,12 @@ const Spot = () => {
         <span className="d-block mb--xs">Latitude : {spot.latitude}</span>
         <p>{spot.description}</p>
         {AddFavoriteSpotButton()}
-        <WavesChart data={spot.wavewatchData} width={700} height={200} />
-        <PeriodChart data={spot.wavewatchData} width={700} height={200} />
-        <TempChart data={spot.gfsData} width={700} height={200} />
+        <div className="mt--l">
+            <WavesChart data={spot.wavewatchData} width={700} height={200} />
+            <PeriodChart data={spot.wavewatchData} width={700} height={200} />
+            <TempChart data={spot.gfsData} width={700} height={200} />
+        </div>
+
       </section>
     );
   };

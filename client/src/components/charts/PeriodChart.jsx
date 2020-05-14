@@ -26,7 +26,9 @@ const PeriodChart = (props) => {
       );
     }
     return (
-      <VictoryChart
+        <div>
+          <h4>Période des vagues</h4>
+        <VictoryChart
         animate={{ duration: 1000 }}
         theme={VictoryTheme.material}
         width={props.width}
@@ -78,6 +80,7 @@ const PeriodChart = (props) => {
           }}
         />
       </VictoryChart>
+        </div>
     );
   };
 
