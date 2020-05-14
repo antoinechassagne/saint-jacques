@@ -5,6 +5,7 @@ import ApiUsers from "../api/users";
 import CookieManager from "../services/CookieManager";
 import routes from "../settings/routes";
 import WavesChart from "../components/charts/WavesChart";
+import PeriodChart from "../components/charts/PeriodChart";
 
 const Spot = () => {
   document.title = "Saint Jacques | Chargement...";
@@ -90,6 +91,8 @@ const Spot = () => {
         <p>{spot.description}</p>
         {AddFavoriteSpotButton()}
         <WavesChart data={spot.weatherData} width={400} height={200} />
+        <PeriodChart data={spot.weatherData} width={400} height={200} />
+
       </section>
     );
   };
