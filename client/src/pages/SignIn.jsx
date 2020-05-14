@@ -6,6 +6,7 @@ import CookieManager from "../services/CookieManager";
 import FormBase from "../components/form/FormBase";
 import InputEmail from "../components/form/inputs/InputEmail";
 import InputPassword from "../components/form/inputs/InputPassword";
+import Loader from "../components/Loader";
 
 const SignIn = () => {
   document.title = "Saint Jacques | Se connecter";
@@ -52,7 +53,7 @@ const SignIn = () => {
           label="Mot de passe"
         />
       </FormBase>
-      {loading && <span>Chargement...</span>}
+      {loading && <Loader />}
       <span className="mt--s mb--xs d-block">
         Vous n'avez pas encore de compte ?{" "}
         <NavLink

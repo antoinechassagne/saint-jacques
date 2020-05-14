@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import ApiSpots from "../api/spots";
+import Loader from "../components/Loader";
 
 const Spots = () => {
   document.title = "Saint Jacques | Spots";
@@ -30,15 +31,16 @@ const Spots = () => {
       {spots.map((spot, index) => (
         <li key={index}>
           <Link to={`${process.env.PUBLIC_URL}/spots/${spot.id}`}>
-            {spot.name}
+            <h2>{spot.name}</h2>
           </Link>
+          <p className="d-block mb--l">{spot.description}</p>
         </li>
       ))}
     </ul>
   );
 
   const content = () => {
-    if (loading) return <span>Chargement...</span>;
+    if (loading) return <Loader />;
     if (error) return <span>Une erreur est survenue.</span>;
     if (!spots.length) return <span>Aucun spot trouvé.</span>;
     return renderSpots();

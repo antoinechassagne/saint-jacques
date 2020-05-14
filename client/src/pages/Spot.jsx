@@ -4,6 +4,7 @@ import ApiSpots from "../api/spots";
 import ApiUsers from "../api/users";
 import CookieManager from "../services/CookieManager";
 import routes from "../settings/routes";
+import Loader from "../components/Loader";
 import WavesChart from "../components/charts/WavesChart";
 import PeriodChart from "../components/charts/PeriodChart";
 import TempChart from "../components/charts/TempChart";
@@ -82,7 +83,7 @@ const Spot = () => {
   };
 
   const content = () => {
-    if (loading) return <span>Chargement...</span>;
+    if (loading) return <Loader />;
     if (error) return <span>Une erreur est survenue.</span>;
     return (
       <section>

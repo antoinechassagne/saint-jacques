@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import CookieManager from "../services/CookieManager";
 import SearchSpots from "../components/search/SearchSpots";
 import WavesChart from "../components/charts/WavesChart";
+import Loader from "../components/Loader";
 import ApiSpots from "../api/spots";
 import ApiUsers from "../api/users";
 
@@ -41,7 +42,7 @@ const Home = () => {
     return (
       <div className="mb--l">
         <h2 className="mt--l">Vos spots favoris</h2>
-        {loadingFavoriteSpots && <span>Chargement...</span>}
+        {loadingFavoriteSpots && <Loader />}
         {!loadingFavoriteSpots && !favoriteSpots.length && (
           <span>Aucun spots favoris.</span>
         )}

@@ -4,6 +4,7 @@ import CookieManager from "../services/CookieManager";
 import FormBase from "../components/form/FormBase";
 import InputEmail from "../components/form/inputs/InputEmail";
 import InputPassword from "../components/form/inputs/InputPassword";
+import Loader from "../components/Loader";
 
 const SignUp = () => {
   document.title = "Saint Jacques | S'inscrire";
@@ -78,7 +79,7 @@ const SignUp = () => {
           </span>
         )}
       </FormBase>
-      {loading && <span className="d-block mt--s">Chargement...</span>}
+      {loading && <Loader />}
     </section>
   );
 };
