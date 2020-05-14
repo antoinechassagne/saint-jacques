@@ -89,7 +89,7 @@ const Spot = () => {
         <span className="d-block mb--xs">Latitude : {spot.longitude}</span>
         <p>{spot.description}</p>
         {AddFavoriteSpotButton()}
-        <WavesChart data={spot.weatherData} />
+        <WavesChart data={spot.weatherData} width={400} height={200} />
       </section>
     );
   };

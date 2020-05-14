@@ -39,7 +39,7 @@ const Home = () => {
     if (!isLogged) return;
 
     return (
-      <div>
+      <div className="mb--l">
         <h2 className="mt--l">Vos spots favoris</h2>
         {loadingFavoriteSpots && <span>Chargement...</span>}
         {!loadingFavoriteSpots && !favoriteSpots.length && (
@@ -48,7 +48,7 @@ const Home = () => {
         {favoriteSpots.map((spot) => (
           <>
             <h4 className="d-block mt--m">{spot.name}</h4>
-            <WavesChart data={spot.weatherData} />
+            <WavesChart data={spot.weatherData} width={400} height={200} />
           </>
         ))}
       </div>
