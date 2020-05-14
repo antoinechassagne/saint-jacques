@@ -48,7 +48,7 @@ const Home = () => {
         {favoriteSpots.map((spot) => (
           <>
             <h4 className="d-block mt--m">{spot.name}</h4>
-            <WavesChart data={spot.weatherData} width={400} height={200} />
+            <WavesChart data={spot.wavewatchData} width={400} height={200} />
           </>
         ))}
       </div>
