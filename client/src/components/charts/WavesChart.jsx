@@ -61,8 +61,6 @@ const WavesChart = (props) => {
         <VictoryArea
           data={data}
           interpolation={"basis"}
-          x="date"
-          y="waveHeight"
           labelComponent={<VictoryTooltip />}
           style={{
             data: {

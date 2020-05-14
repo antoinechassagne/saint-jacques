@@ -31,6 +31,7 @@ const PeriodChart = (props) => {
         theme={VictoryTheme.material}
         width={props.width}
         height={props.height}
+        // scale={{ x: "time", y: "linear" }}
       >
         <VictoryAxis
           tickFormat={(x) => {
@@ -45,9 +46,9 @@ const PeriodChart = (props) => {
           style={{
             tickLabels: {
               fontSize: 6,
-              angle: -45,
+              angle: 0,
               padding: 10,
-              textAnchor: "end",
+              textAnchor: "middle",
             },
           }}
         />
@@ -55,21 +56,21 @@ const PeriodChart = (props) => {
           dependentAxis
           tickFormat={(y) => `${y}m`}
           style={{
-            tickLabels: { fontSize: 6 },
+            tickLabels: { fontSize: 4 },
           }}
         />
         <VictoryBar
           data={data}
           interpolation={"basis"}
-          x="date"
-          y="waveHeight"
-          labels={({ datum }) => datum.y}
+          barRatio={0.8}
+          labels={({ datum }) => datum.y + "s"}
           style={{
             data: {
               fill: "cyan",
             },
             labels: {
               fill: "white",
+              fontSize: 2,
             },
           }}
         />

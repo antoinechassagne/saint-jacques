@@ -8,8 +8,8 @@ const processWeatherData = (data, dataLabel) => {
   }
   data.ts = data.ts.splice(0, Math.floor(data.ts.length / 2));
   return data.ts.map((ts, i) => ({
-    date: moment(ts),
-    waveHeight: parseFloat(data[dataLabel][i].toFixed(2)),
+    x: moment(ts),
+    y: parseFloat(data[dataLabel][i].toFixed(2)),
   }));
 };
 
