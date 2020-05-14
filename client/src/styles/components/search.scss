@@ -11,17 +11,29 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: size(16);
+    min-height: size(12);
+    border: solid 1px;
+    border-color: transparent;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 
     ul {
       width: 100%;
-      background: $grey--light;
+      background: $grey--dark;
+      border: solid 1px;
+      border-color: transparent;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
 
-      li>a {
+      li > a {
         display: block;
-        padding: size(8);
+        padding: size(12);
         color: white;
         transition: ease 0.1s;
+        border: solid 1px;
+        border-color: transparent;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
 
         &:hover {
           background: $grey--dark;
@@ -32,8 +44,8 @@
 
     span {
       width: 100%;
-      padding: size(8);
-      background: $grey--light;
+      padding: size(12);
+      background: $grey--dark;
     }
   }
 
