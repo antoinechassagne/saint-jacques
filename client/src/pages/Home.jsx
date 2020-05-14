@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import CookieManager from "../services/CookieManager";
 import SearchSpots from "../components/search/SearchSpots";
-import WavesChart from "../components/charts/WavesChart";
 import Loader from "../components/Loader";
 import ApiSpots from "../api/spots";
 import ApiUsers from "../api/users";
@@ -47,10 +47,9 @@ const Home = () => {
           <span>Aucun spots favoris.</span>
         )}
         {favoriteSpots.map((spot) => (
-          <>
+          <Link to={`${process.env.PUBLIC_URL}/spots/${spot.id}`}>
             <h4 className="d-block mt--m">{spot.name}</h4>
-            <WavesChart data={spot.wavewatchData} width={400} height={200} />
-          </>
+          </Link>
         ))}
       </div>
     );

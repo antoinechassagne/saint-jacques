@@ -22,12 +22,6 @@ class CustomUserController extends AbstractController
         // Serialize
         $spots = json_decode($serializer->serialize($spots, "json"), JSON_UNESCAPED_SLASHES);
 
-        // Add weather data to spots
-        foreach ($spots as $key => $value) {
-            $spots[$key]['wavewatchData'] = $weatherDataPuller->pull(floatval($spots[$key]['latitude']), floatval($spots[$key]['longitude']), "wavewatch");
-            $spots[$key]['gfsData'] = $weatherDataPuller->pull(floatval($spots[$key]['latitude']), floatval($spots[$key]['longitude']), "gfs");
-        }
-
         $response = new JsonResponse();
         $response->setContent($serializer->serialize($spots, "json"));
         $response->setStatusCode(JsonResponse::HTTP_OK);
