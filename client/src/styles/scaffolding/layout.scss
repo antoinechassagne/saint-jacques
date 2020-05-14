@@ -42,6 +42,42 @@
   }
 }
 
+.ml {
+  &--xs {
+    margin-left: 0.5rem;
+  }
+  &--s {
+    margin-left: 1rem;
+  }
+  &--m {
+    margin-left: 2rem;
+  }
+  &--l {
+    margin-left: 3rem;
+  }
+  &--xl {
+    margin-left: 4rem;
+  }
+}
+
+.mr {
+  &--xs {
+    margin-right: 0.5rem;
+  }
+  &--s {
+    margin-right: 1rem;
+  }
+  &--m {
+    margin-right: 2rem;
+  }
+  &--l {
+    margin-right: 3rem;
+  }
+  &--xl {
+    margin-right: 4rem;
+  }
+}
+
 .pt {
   &--xs {
     padding-top: 0.5rem;

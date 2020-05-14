@@ -6,6 +6,8 @@ nav {
   padding: 2rem;
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
 
   &__brand {
     text-transform: uppercase;
@@ -21,9 +23,12 @@ nav {
     display: flex;
     flex-wrap: wrap;
     margin-left: 4rem;
+    margin-right: 1rem;
   }
 
   &__menu li {
     margin: 0 1rem;
+    display: flex;
+    align-items: center;
   }
 }

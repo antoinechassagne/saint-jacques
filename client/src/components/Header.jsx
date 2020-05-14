@@ -8,11 +8,6 @@ const Header = (props) => {
     .filter((key) => props.pages[key].menu)
     .map((key) => props.pages[key]);
 
-  // If user isn't logged, we add signin link in menu
-  if (!props.isLogged) {
-    pages.push(props.pages.signIn);
-  }
-
   const menu = () => {
     const entries = Object.keys(pages).map((key, index) => (
       <li key={index}>
@@ -31,28 +26,39 @@ const Header = (props) => {
 
   return (
     <header className="header mb--xl">
-      <NavLink
-        exact={true}
-        to={`${process.env.PUBLIC_URL}`}
-        className="header__brand"
-      >
-        Saint Jacques
-      </NavLink>
       <nav>
+        <NavLink
+          exact={true}
+          to={`${process.env.PUBLIC_URL}`}
+          className="header__brand"
+        >
+          Saint Jacques
+        </NavLink>
         <ul className="header__menu">{menu()}</ul>
-        {props.isLogged && (
-          <button
-            onClick={() => {
-              CookieManager.delete("jwt");
-              window.location.replace(
-                `${process.env.PUBLIC_URL}${props.pages.home.path}`
-              );
-            }}
-          >
-            Se déconnecter
-          </button>
-        )}
       </nav>
+      {props.isLogged && (
+        <button
+          onClick={() => {
+            CookieManager.delete("jwt");
+            window.location.replace(
+              `${process.env.PUBLIC_URL}${props.pages.home.path}`
+            );
+          }}
+        >
+          Se déconnecter
+        </button>
+      )}
+      {!props.isLogged && (
+        <button
+          onClick={() => {
+            window.location.replace(
+              `${process.env.PUBLIC_URL}${props.pages.signIn.path}`
+            );
+          }}
+        >
+          {props.pages.signIn.label}
+        </button>
+      )}
     </header>
   );
 };

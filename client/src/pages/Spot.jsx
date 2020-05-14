@@ -59,10 +59,10 @@ const Spot = () => {
 
     if (!isLogged) {
       return (
-        <div className="mt--s">
+        <div className="mt--m">
           <span>Connectez-vous pour ajouter ce spot à vos favoris</span>
-          <button
-            className="mt--l"
+          <a
+            className="ml--s link"
             onClick={() => {
               window.location.replace(
                 `${process.env.PUBLIC_URL}${routes.signIn.path}`
@@ -70,7 +70,7 @@ const Spot = () => {
             }}
           >
             Se connecter
-          </button>
+          </a>
         </div>
       );
     }
