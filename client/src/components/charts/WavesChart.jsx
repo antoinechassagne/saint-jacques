@@ -15,7 +15,7 @@ import "moment/locale/fr";
 moment.locale("fr");
 
 const WavesChart = (props) => {
-  const data = processWeatherData(props.data);
+  const data = processWeatherData(props.data, "waves_height-surface");
 
   const content = () => {
     if (!data) {
