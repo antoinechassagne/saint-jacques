@@ -19,6 +19,7 @@ export default {
     component: Spots,
     menu: true,
     guard: false,
+
   },
   spot: {
     path: "/spots/:id",
@@ -40,6 +41,7 @@ export default {
     component: SignUp,
     menu: false,
     guard: false,
+
   },
   notfound: {
     path: "/404",
