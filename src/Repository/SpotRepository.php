@@ -28,9 +28,9 @@ class SpotRepository extends ServiceEntityRepository
     public function search(String $term)
     {
         return $this->createQueryBuilder('s')
-                ->andWhere('s.name LIKE :term')
-                ->setParameter('term', '%' . $term . '%')
-                ->getQuery()
-                ->execute();
+            ->andWhere('s.name LIKE :term')
+            ->setParameter('term', '%' . $term . '%')
+            ->getQuery()
+            ->execute();
     }
 }

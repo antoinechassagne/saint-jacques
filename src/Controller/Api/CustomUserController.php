@@ -4,8 +4,8 @@ namespace App\Controller\Api;
 use App\Entity\Spot;
 use App\Service\WeatherDataPuller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 
@@ -14,7 +14,7 @@ class CustomUserController extends AbstractController
     /**
      * @Route("/api/users/favorite-spots", name="user_favorite_spots")
      */
-    public function getUserFavoriteSpots(SerializerInterface $serializer, WeatherDataPuller $weatherDataPuller) 
+    public function getUserFavoriteSpots(SerializerInterface $serializer, WeatherDataPuller $weatherDataPuller)
     {
         $user = $this->getUser();
         $spots = $user->getFavoriteSpots();
@@ -35,17 +35,17 @@ class CustomUserController extends AbstractController
     }
 
     /**
-    * @Route("/api/users/add-favorite-spot", name="add_favorite_spot")
-    */
-    public function addFavoriteSpot(Request $request) 
+     * @Route("/api/users/add-favorite-spot", name="add_favorite_spot")
+     */
+    public function addFavoriteSpot(Request $request)
     {
         return $this->toggleFavoriteSpot($request, true);
     }
 
     /**
-    * @Route("/api/users/remove-favorite-spot", name="remove_favorite_spot")
-    */
-    public function removeFavoriteSpot(Request $request) 
+     * @Route("/api/users/remove-favorite-spot", name="remove_favorite_spot")
+     */
+    public function removeFavoriteSpot(Request $request)
     {
         return $this->toggleFavoriteSpot($request, false);
     }
@@ -57,7 +57,8 @@ class CustomUserController extends AbstractController
      * @param Boolean $add If set to true, the favorite spot will be add, otherwise it will be remove
      * @return void
      */
-    private function toggleFavoriteSpot(Request $request, bool $add) {
+    private function toggleFavoriteSpot(Request $request, bool $add)
+    {
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
         $spot = $em->getRepository(Spot::class)->find($request->query->get('spot'));
@@ -67,7 +68,7 @@ class CustomUserController extends AbstractController
         } else {
             $user->removeFavoriteSpot($spot);
         }
-        
+
         try {
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
