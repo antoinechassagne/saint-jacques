@@ -23,7 +23,8 @@ class CustomSpotController extends AbstractController
         $result = json_decode($serializer->serialize($spot, "json"), JSON_UNESCAPED_SLASHES);
 
         // Add weather data to response
-        $result['weatherData'] = $weatherDataPuller->pull(floatval($result['latitude']), floatval($result['longitude']));
+        $result['wavewatchData'] = $weatherDataPuller->pull(floatval($result['latitude']), floatval($result['longitude']), "wavewatch");
+        $result['aromeData'] = $weatherDataPuller->pull(floatval($result['latitude']), floatval($result['longitude']), "arome");
         
         // Add flag to response
         $result['isFavorite'] = false;
