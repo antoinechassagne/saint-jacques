@@ -22,19 +22,20 @@ class WeatherDataPuller
      *
      * @param float $latitude
      * @param float $longitude
+     * @param string $model The data model (see API docs). Can be "wavewatch" or 'arome".
      * @return 
      */
-    public function pull(float $latitude, float $longitude)
+    public function pull(float $latitude, float $longitude, $model)
     {
         $body = [
             "lat" => $latitude,
             "lon" => $longitude,
-            "model" => "wavewatch",
-            "parameters" => ["waves"],
+            "model" => $model,
+            "parameters" => $model == "wavewatch" ? ["waves"] : ["temp", "wind"],
             "levels" => ["surface"],
             "key" => $this->apiKey
         ];
-
+        
         $response = $this->client->request('POST', $this->apiUrl, ['json' => $body]);
         $status = $response->getStatusCode();
         
