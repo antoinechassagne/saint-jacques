@@ -89,7 +89,7 @@ const Spot = () => {
       <section>
         <h1>{spot.name}</h1>
         <span className="d-block mb--xs">Longitude : {spot.longitude}</span>
-        <span className="d-block mb--xs">Latitude : {spot.longitude}</span>
+        <span className="d-block mb--xs">Latitude : {spot.latitude}</span>
         <p>{spot.description}</p>
         {AddFavoriteSpotButton()}
         <WavesChart data={spot.wavewatchData} width={700} height={200} />
